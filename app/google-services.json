@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "114878575402",
+    "firebase_url": "https://pmd-quiz.firebaseio.com",
+    "project_id": "pmd-quiz",
+    "storage_bucket": "pmd-quiz.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:114878575402:android:a11bc64976aa084c5e6453",
+        "android_client_info": {
+          "package_name": "ashtan.pmdquiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "114878575402-uhl746gnbaesmctcud5ruimnslt47l80.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ashtan.pmdquiz",
+            "certificate_hash": "f7b28d76bd434d1b60b7aaa2cc0351a3f5286003"
+          }
+        },
+        {
+          "client_id": "114878575402-s31vjvp6qsrjsl1jq6r39agmtsm5rcln.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALfpzPEtpMBNUaZcgldqomWEiK6xhNnOw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "114878575402-s31vjvp6qsrjsl1jq6r39agmtsm5rcln.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "114878575402-b7e6a1ltt0o4cm99ic5d3ggp1oi3lgee.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "ashtan.pmdquiz"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
