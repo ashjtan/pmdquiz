@@ -24,6 +24,9 @@ public class ResultsActivity extends AppCompatActivity {
 
     private ArrayList<Result> results = new ArrayList<>();
 
+    private TextView result;
+    private TableLayout friendResults;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,10 +42,10 @@ public class ResultsActivity extends AppCompatActivity {
                 MainActivity.pokemon.get(maxNature()));
 
 
-        TextView result = (TextView) findViewById(R.id.poke_result);
+        result = (TextView) findViewById(R.id.poke_result);
         result.setText(currQuizResult.pokemon);      //sets to pokemon name
 
-        TableLayout friendResults = (TableLayout) findViewById(R.id.friend_results);
+        friendResults = (TableLayout) findViewById(R.id.friend_results);
 
         //load all results from db
         resultsRef.addValueEventListener(new ValueEventListener() {
@@ -70,6 +73,9 @@ public class ResultsActivity extends AppCompatActivity {
         String id = resultsRef.push().getKey();
         resultsRef.child(id).setValue(currQuizResult);
     }
+
+
+
 
     //Helpers
 

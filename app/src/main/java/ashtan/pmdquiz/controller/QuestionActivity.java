@@ -16,7 +16,12 @@ import ashtan.pmdquiz.model.Question;
 
 public class QuestionActivity extends AppCompatActivity {
 
-    Question currQ;
+    private Question currQ;
+
+    private TextView qText;
+    private Button opt1;
+    private Button opt2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,14 +38,14 @@ public class QuestionActivity extends AppCompatActivity {
         currQ = MainActivity.questions[MainActivity.selectedQs[MainActivity.currQNum]];
 
         //set display
-        TextView qText = (TextView) findViewById(R.id.q_text);
+        qText = (TextView) findViewById(R.id.q_text);
         String displayQText = MainActivity.currQNum + 1 + ". " + currQ.getText();   //+1 to acct for 0-indexing
         qText.setText(displayQText);
 
-        Button opt1 = (Button) findViewById(R.id.opt1);
+        opt1 = (Button) findViewById(R.id.opt1);
         opt1.setText(currQ.getChoices().first);
 
-        Button opt2 = (Button) findViewById(R.id.opt2);
+        opt2 = (Button) findViewById(R.id.opt2);
         opt2.setText(currQ.getChoices().second);
     }
 

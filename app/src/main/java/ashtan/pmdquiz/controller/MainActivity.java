@@ -3,8 +3,11 @@ package ashtan.pmdquiz.controller;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -26,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     public static int currQNum;                         //0-7 marking curr q
     public static Map<Nature, Integer> currQuizResults; //cumulative results for curr quiz
 
+    private Button startBtn;
+    private EditText name;
 
 
     @Override
@@ -34,9 +39,33 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
+        startBtn = (Button) findViewById(R.id.start);
+        startBtn.setEnabled(false);
+
+        name = (EditText) findViewById(R.id.display_name);
+        name.addTextChangedListener(displayNameTextWatcher);
+
         initQuestions();
         initPokemon();
     }
+
+    private TextWatcher displayNameTextWatcher =  new TextWatcher() {
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            startBtn.setEnabled(!name.getText().toString().trim().isEmpty());
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    };
 
     @Override
     protected void onStart() {
@@ -44,13 +73,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
     //Event Handlers
     public void start(View v) {
         initCurrQuiz();     //select 8 random q's for curr quiz
         currQNum = 0;
         initUser();         //init map keeping track of nature points
+
+        displayName = name.getText().toString().trim();
 
         startActivity(new Intent(MainActivity.this, QuestionActivity.class));
     }
@@ -68,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         questions[3] = new Question("Have you ever said \"nice to meet you\" to someone you've met previously?",
                 "Yes.", "No.", "Brave 2,Relaxed 1", "Calm 1");
         questions[4] = new Question("Have you ever looked at your reflection in a mirror and thought, \"What a cool person\"?",
-                "Certainly!", "Well, not really...", "Jolly 1,Naive 1,Sassy 2", "Calm 1" );
+                "Certainly!", "Well, not really...", "Jolly 1,Naive 1,Sassy 2", "Calm 1");
         questions[5] = new Question("Have you ever thought that if you dug in your backyard you could find buried treasure?",
                 "Yes.", "No.", "Naive 2", "Quiet 1");
         questions[6] = new Question("Do you prefer to play outside rather than inside?",
@@ -120,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
         pokemon.put(Nature.DOCILE, "Charmander");
         pokemon.put(Nature.HARDY, "Torchic");
         pokemon.put(Nature.HASTY, "Shinx");
-        pokemon.put(Nature.IMPISH,"Piplup");
+        pokemon.put(Nature.IMPISH, "Piplup");
         pokemon.put(Nature.JOLLY, "Totodile");
         pokemon.put(Nature.LONELY, "Bulbasaur");
         pokemon.put(Nature.NAIVE, "Chimchar");
