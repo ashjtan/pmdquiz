@@ -7,4 +7,9 @@ public class Result {
     public Result() {
 
     }
+
+    public Result(String displayName, String pokemon) {
+        this.displayName = displayName;
+        this.pokemon = pokemon;
+    }
 }
