@@ -7,7 +7,6 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="What Pokemon Are You?"
@@ -19,10 +18,11 @@
 
     <Button
         android:id="@+id/start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="131dp"
+        android:layout_height="43dp"
+        android:onClick="start"
         android:text="Start Quiz"
-        tools:layout_editor_absoluteX="140dp"
-        tools:layout_editor_absoluteY="308dp" />
+        tools:layout_editor_absoluteX="127dp"
+        tools:layout_editor_absoluteY="315dp" />
 
 </android.support.constraint.ConstraintLayout>

@@ -1,8 +1,11 @@
 package ashtan.pmdquiz;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -28,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //TextView title = (TextView) findViewById(R.id.title);
+        Button start = (Button) findViewById(R.id.start);
     }
 
     @Override
@@ -55,4 +58,11 @@ public class MainActivity extends AppCompatActivity {
 
         });
     }
+
+    //EVENT HANDLER
+    public void start(View v) {
+        System.out.println("start clicked");
+        //startActivity(new Intent(MainActivity.this, QuestionActivity.class));
+    }
+
 }
