@@ -7,25 +7,38 @@
     tools:context=".controller.MainActivity">
 
     <android.support.constraint.ConstraintLayout
-        android:layout_width="369dp"
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
         android:layout_height="391dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="72dp">
+        android:layout_marginBottom="48dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginStart="7dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/start"
             android:layout_width="131dp"
-            android:layout_height="43dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="76dp"
             android:onClick="start"
             android:text="Start Quiz"
-            tools:layout_editor_absoluteX="119dp"
-            tools:layout_editor_absoluteY="272dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="206dp"
+            android:layout_marginTop="47dp"
             android:text="What Pokemon Are You?"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/start"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
