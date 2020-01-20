@@ -1,9 +1,8 @@
-package ashtan.pmdquiz;
+package ashtan.pmdquiz.controller;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -13,23 +12,18 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-import ashtan.pmdquiz.model.Question;
+import ashtan.pmdquiz.R;
 import ashtan.pmdquiz.model.Result;
 
-public class MainActivity extends AppCompatActivity {
-    private FirebaseDatabase db = FirebaseDatabase.getInstance();
-    private DatabaseReference resultsDb = db.getReference("results");
+public class ResultsActivity extends AppCompatActivity {
+    private DatabaseReference resultsDb = FirebaseDatabase.getInstance().getReference("results");
 
     private ArrayList<Result> results = new ArrayList<>();
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        //TextView title = (TextView) findViewById(R.id.title);
+        setContentView(R.layout.activity_results);
     }
 
     @Override
@@ -46,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
 
                     //System.out.println(results.get(0).displayName + " " + results.get(0).pokemon);
                 }
-
             }
 
             @Override
