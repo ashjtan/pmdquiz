@@ -1,8 +1,7 @@
-package ashtan.pmdquiz;
+package ashtan.pmdquiz.controller;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -11,34 +10,36 @@ import android.widget.TextView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import ashtan.pmdquiz.R;
 import ashtan.pmdquiz.model.Result;
 
-public class MainActivity extends AppCompatActivity {
-    private FirebaseDatabase db = FirebaseDatabase.getInstance();
-    private DatabaseReference resultsDb = db.getReference("results");
+public class QuestionActivity extends AppCompatActivity {
 
-    private ArrayList<Result> results = new ArrayList<>();
+    private DatabaseReference questionsDb = MainActivity.db.getReference("questions");
+
+    private ArrayList<Result> questions = new ArrayList<>();
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_question);
 
-        Button start = (Button) findViewById(R.id.start);
+        TextView qText = (TextView) findViewById(R.id.q_text);
+        Button opt1 = (Button) findViewById(R.id.opt1);
+        Button opt2 = (Button) findViewById(R.id.opt2);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        resultsDb.addValueEventListener(new ValueEventListener() {
+/*        resultsDb.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -55,14 +56,16 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
                 Log.w("loadResults:onCancelled", databaseError.toException());
             }
+        });*/
 
-        });
     }
 
     //EVENT HANDLER
-    public void start(View v) {
-        System.out.println("start clicked");
-        //startActivity(new Intent(MainActivity.this, QuestionActivity.class));
+    public void select1(View v) {
+
     }
 
+    public void select2(View v) {
+
+    }
 }
