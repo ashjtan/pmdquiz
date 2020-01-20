@@ -13,7 +13,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-import ashtan.pmdquiz.model.Question;
 import ashtan.pmdquiz.model.Result;
 
 public class MainActivity extends AppCompatActivity {
