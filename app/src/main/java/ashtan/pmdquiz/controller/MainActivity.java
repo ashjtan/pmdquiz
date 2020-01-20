@@ -3,17 +3,9 @@ package ashtan.pmdquiz.controller;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -23,14 +15,14 @@ import java.util.Set;
 import ashtan.pmdquiz.R;
 import ashtan.pmdquiz.model.Nature;
 import ashtan.pmdquiz.model.Question;
-import ashtan.pmdquiz.model.Result;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static Question[] questions;     //all possible questions
+    public static Question[] questions;                 //all possible questions
+    public static Map<Nature, String> pokemon;          //all possible pokemon quiz results
 
-    public static Integer[] selectedQs;     //8 selected questions for curr quiz
-    public static int currQNum;             //0-7 marking curr q
+    public static Integer[] selectedQs;                 //8 selected questions for curr quiz
+    public static int currQNum;                         //0-7 marking curr q
     public static Map<Nature, Integer> currQuizResults; //cumulative results for curr quiz
 
 
@@ -40,11 +32,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        Button start = (Button) findViewById(R.id.start);
-
-        questions = new Question[25];
 
         initQuestions();
+        initPokemon();
     }
 
     @Override
@@ -66,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
 
     //Helpers
     private void initQuestions() {
+        questions = new Question[25];
+
         questions[0] = new Question("Have you ever blurted something out without thinking about the consequences first?",
                 "Yes.", "No.", "Lonely 2,Relaxed 2", "Hardy 1");
         questions[1] = new Question("Do you want to be taller someday?",
@@ -116,6 +108,27 @@ public class MainActivity extends AppCompatActivity {
                 "All the time!", "Never.", "Jolly 1,Relaxed 2", "Quiet 1");
         questions[24] = new Question("Do you think blaming something you did on someone else is sometimes necessary?",
                 "Of course!", "No way!", "Quiet 2,Sassy 2", "Brave 2");
+    }
+
+    private void initPokemon() {
+        pokemon = new HashMap<>();
+
+        pokemon.put(Nature.BOLD, "Turtwig");
+        pokemon.put(Nature.BRAVE, "Pikachu");
+        pokemon.put(Nature.CALM, "Chikorita");
+        pokemon.put(Nature.DOCILE, "Charmander");
+        pokemon.put(Nature.HARDY, "Torchic");
+        pokemon.put(Nature.HASTY, "Shinx");
+        pokemon.put(Nature.IMPISH,"Piplup");
+        pokemon.put(Nature.JOLLY, "Totodile");
+        pokemon.put(Nature.LONELY, "Bulbasaur");
+        pokemon.put(Nature.NAIVE, "Chimchar");
+        pokemon.put(Nature.QUIET, "Treecko");
+        pokemon.put(Nature.QUIRKY, "Squirtle");
+        pokemon.put(Nature.RASH, "Mudkip");
+        pokemon.put(Nature.RELAXED, "Phanpy");
+        pokemon.put(Nature.SASSY, "Riolu");
+        pokemon.put(Nature.TIMID, "Cyndaquil");
     }
 
     private void initUser() {
