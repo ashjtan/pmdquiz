@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static Question[] questions;                 //all possible questions
     public static Map<Nature, String> pokemon;          //all possible pokemon quiz results
+    public static String displayName;
 
     public static Integer[] selectedQs;                 //8 selected questions for curr quiz
     public static int currQNum;                         //0-7 marking curr q
