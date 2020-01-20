@@ -22,8 +22,6 @@ import ashtan.pmdquiz.model.Result;
 public class ResultsActivity extends AppCompatActivity {
     private DatabaseReference resultsRef = FirebaseDatabase.getInstance().getReference("results");
 
-    private ArrayList<Result> results = new ArrayList<>();
-
     private TextView result;
     private TableLayout friendResults;
 
@@ -41,10 +39,11 @@ public class ResultsActivity extends AppCompatActivity {
         Result currQuizResult = new Result(MainActivity.displayName,
                 MainActivity.pokemon.get(maxNature()));
 
-
+        //set curr result
         result = (TextView) findViewById(R.id.poke_result);
         result.setText(currQuizResult.pokemon);      //sets to pokemon name
 
+        //set friends' results
         friendResults = (TableLayout) findViewById(R.id.friend_results);
 
         //load all results from db
@@ -54,7 +53,10 @@ public class ResultsActivity extends AppCompatActivity {
 
                 for(DataSnapshot resultSnapshot : dataSnapshot.getChildren()) {
                     Result curr = resultSnapshot.getValue(Result.class);
-                    results.add(curr);
+
+                    //add data to table
+                    addFriendResult(curr.displayName, curr.pokemon, friendResults);
+
                 }
             }
 
@@ -64,10 +66,6 @@ public class ResultsActivity extends AppCompatActivity {
             }
         });
 
-        //add results to view
-        for (Result r : results) {
-            addFriendResult(r.displayName, r.pokemon, friendResults);
-        }
 
         //add currQuizResult to db
         String id = resultsRef.push().getKey();
@@ -98,12 +96,12 @@ public class ResultsActivity extends AppCompatActivity {
 
         TextView col1 = new TextView(this);
         col1.setText(displayId);
-        col1.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+        col1.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT, 1f));
         tr.addView(col1);
 
         TextView col2 = new TextView(this);
         col2.setText(pokemon);
-        col2.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+        col2.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT, 1f));
         tr.addView(col2);
 
         tl.addView(tr);
